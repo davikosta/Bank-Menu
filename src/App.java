@@ -33,7 +33,7 @@ public class App {
         }
     }
 
-    public static String showConsumerData() {
+    private static String showConsumerData() {
         return String.format("""
                 ---------------------------------------------------------------------
                 Resumo:
@@ -68,7 +68,7 @@ public class App {
                 """;
     }
 
-    public static void doOperations(int userChoice) {
+    private static void doOperations(int userChoice) {
         switch (userChoice) {
             case 1:
                 System.out.println("O saldo atual é de " + consumerBalance);
@@ -95,11 +95,13 @@ public class App {
                 System.out.println(showConsumerData());
                 break;
             default:
-                System.out.println(errorMessage);
+                if (userChoice != 5) {
+                    System.out.println(errorMessage);
+                }
                 break;
         }
     }
-    static String newBalanceMessage() {
+    private static String newBalanceMessage() {
         return String.format("O seu novo saldo é de R$ %.2f",consumerBalance);
     }
 
