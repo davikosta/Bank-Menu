@@ -2,12 +2,7 @@ import java.util.Scanner;
 
 public class App {
     //Consumer information
-    static String consumerName = "João Pedro da Silva";
-    static String accountType = "Conta corrente";
-    static int consumerSince = 2021;
-    static double consumerBalance = 2000;
-    static int finishedOperations = 0;
-
+    static BankAccount bankAccount1 = new BankAccount();
     //Attributes to make the operations
     static Scanner scanner = new Scanner(System.in);
     static int userChoice = 0;
@@ -19,6 +14,11 @@ public class App {
 
 
     public static void main(String[] args) {
+        bankAccount1.setConsumerName("João Pedro da Silva");
+        bankAccount1.setAccountType("Conta corrente");
+        bankAccount1.setConsumerSince(2021);
+        bankAccount1.setConsumerBalance(2000);
+
         App app = new App();
 
         System.out.println(showConsumerData());
@@ -48,7 +48,7 @@ public class App {
                 
                 Número de
                 operações realizadas:  %d
-                """,consumerName, consumerSince, accountType, consumerBalance, finishedOperations);
+                """,bankAccount1.getConsumerName(), bankAccount1.getConsumerSince(), bankAccount1.getAccountType(), bankAccount1.getConsumerBalance(), bankAccount1.getFinishedOperations());
     }
 
     public String showMenu() {
@@ -71,22 +71,22 @@ public class App {
     private static void doOperations(int userChoice) {
         switch (userChoice) {
             case 1:
-                System.out.println("O saldo atual é de " + consumerBalance);
+                System.out.println("O saldo atual é de " + bankAccount1.getConsumerBalance());
                 break;
             case 2:
                 System.out.println("Quanto deseja depositar na sua conta?");
                 amount = scanner.nextDouble();
-                consumerBalance += amount;
+                bankAccount1.deposit(amount);
                 System.out.println(newBalanceMessage());
-                finishedOperations++;
+                bankAccount1.registerNewOperation();
                 break;
             case 3:
                 System.out.println("Quanto deseja sacar da sua conta?");
                 amount = scanner.nextDouble();
-                if (amount > 0 && amount <= consumerBalance) {
-                    consumerBalance-= amount;
+                if (amount > 0 && amount <= bankAccount1.getConsumerBalance()) {
+                    bankAccount1.draw(amount);
                     System.out.println(newBalanceMessage());
-                    finishedOperations++;
+                    bankAccount1.registerNewOperation();
                 } else {
                     System.out.println(invalidAmountErrorMessage);
                 }
@@ -101,8 +101,8 @@ public class App {
                 break;
         }
     }
-    private static String newBalanceMessage() {
-        return String.format("O seu novo saldo é de R$ %.2f",consumerBalance);
-    }
 
+    private static String newBalanceMessage() {
+        return String.format("O seu novo saldo é de R$ %.2f",bankAccount1.getConsumerBalance());
+    }
 }
