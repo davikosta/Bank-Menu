@@ -1,8 +1,8 @@
 public class BankAccount {
-    String consumerName;
-    String accountType;
-    int consumerSince;
-    double consumerBalance;
+    private String consumerName;
+    private String accountType;
+    private int consumerSince;
+    private double consumerBalance;
     private int finishedOperations = 0;
 
     public void draw(double amountToDeposit) {
