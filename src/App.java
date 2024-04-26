@@ -10,7 +10,6 @@ public class App {
 
     //Messages
     static String errorMessage = "Operação inválida!";
-    static String invalidAmountErrorMessage = "Por favor insira um valor válido!";
 
 
     public static void main(String[] args) {
@@ -77,19 +76,13 @@ public class App {
                 System.out.println("Quanto deseja depositar na sua conta?");
                 amount = scanner.nextDouble();
                 bankAccount1.deposit(amount);
-                System.out.println(newBalanceMessage());
-                bankAccount1.registerNewOperation();
+                newBalanceMessage();
                 break;
             case 3:
                 System.out.println("Quanto deseja sacar da sua conta?");
                 amount = scanner.nextDouble();
-                if (amount > 0 && amount <= bankAccount1.getConsumerBalance()) {
-                    bankAccount1.draw(amount);
-                    System.out.println(newBalanceMessage());
-                    bankAccount1.registerNewOperation();
-                } else {
-                    System.out.println(invalidAmountErrorMessage);
-                }
+                bankAccount1.draw(amount);
+                newBalanceMessage();
                 break;
             case 4:
                 System.out.println(showConsumerData());
@@ -102,7 +95,7 @@ public class App {
         }
     }
 
-    private static String newBalanceMessage() {
-        return String.format("O seu novo saldo é de R$ %.2f",bankAccount1.getConsumerBalance());
+    private static void newBalanceMessage() {
+        System.out.printf("O seu novo saldo é de R$ %.2f%n",bankAccount1.getConsumerBalance());
     }
 }

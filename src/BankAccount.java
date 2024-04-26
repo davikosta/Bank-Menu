@@ -3,18 +3,25 @@ public class BankAccount {
     private String accountType;
     private int consumerSince;
     private double consumerBalance;
-    private int finishedOperations = 0;
+    private int finishedOperations;
 
-    public void draw(double amountToDeposit) {
-        this.consumerBalance -= amountToDeposit;
+    public void deposit(double amountToDeposit) {
+        consumerBalance += amountToDeposit;
+        registerNewOperation();
     }
 
     public void registerNewOperation() {
-        this.finishedOperations++;
+        finishedOperations++;
     }
 
-    public void deposit(double amountToDeposit) {
-        this.consumerBalance += amountToDeposit;
+    public void draw(double amountToDraw) {
+        if (amountToDraw > 0 && amountToDraw <=consumerBalance) {
+            consumerBalance -= amountToDraw;
+            registerNewOperation();
+        } else {
+            String invalidAmountErrorMessage = "Por favor insira um valor válido!";
+            System.out.println(invalidAmountErrorMessage);
+        }
     }
 
     //Getters
