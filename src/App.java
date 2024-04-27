@@ -1,3 +1,5 @@
+import br.com.davikosta.bank.BankAccount;
+
 import java.util.Scanner;
 
 public class App {

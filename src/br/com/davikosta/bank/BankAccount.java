@@ -1,3 +1,5 @@
+package br.com.davikosta.bank;
+
 public class BankAccount {
     private String consumerName;
     private String accountType;
