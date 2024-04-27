@@ -1,15 +1,18 @@
 package br.com.davikosta.bank;
+import br.com.davikosta.messages.Errors;
+import br.com.davikosta.messages.NewBalance;
 
 public class BankAccount {
     private String consumerName;
     private String accountType;
     private int consumerSince;
-    private double consumerBalance;
+    private static double consumerBalance;
     private int finishedOperations;
 
     public void deposit(double amountToDeposit) {
         consumerBalance += amountToDeposit;
         registerNewOperation();
+        NewBalance.message();
     }
 
     public void registerNewOperation() {
@@ -20,9 +23,9 @@ public class BankAccount {
         if (amountToDraw > 0 && amountToDraw <=consumerBalance) {
             consumerBalance -= amountToDraw;
             registerNewOperation();
+            NewBalance.message();
         } else {
-            String invalidAmountErrorMessage = "Por favor insira um valor válido!";
-            System.out.println(invalidAmountErrorMessage);
+            Errors.invalidAmountErrorMessage();
         }
     }
 
@@ -31,7 +34,7 @@ public class BankAccount {
         return finishedOperations;
     }
 
-    public double getConsumerBalance() {
+    public static double getConsumerBalance() {
         return consumerBalance;
     }
 
