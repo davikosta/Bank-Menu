@@ -1,6 +1,5 @@
 import br.com.davikosta.bank.BankAccount;
 import br.com.davikosta.messages.Errors;
-import br.com.davikosta.messages.NewBalance;
 
 import java.util.Scanner;
 
