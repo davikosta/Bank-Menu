@@ -2,6 +2,8 @@
 Projeto proposto durante programa ONE (Oracle Next Education).
 Desafio apresentado na aula 4 do curso Java: criando a sua primeira aplicação.
 Como sugerido, fiz com base nos meus conhecimentos na linguagem. 
+Esse repositório permanece sendo atualizado durante todos os cursos da formação da formação em Java e Orientação a Objetos.
+Afim de aplicar meu aprendizado na linguagem registrando a minha evolução através de commits.
 > Comentários, métodos e variáveis estão em inglês para praticar meu conhecimento em inglês.
 
 ## Assim se parece a "interface"

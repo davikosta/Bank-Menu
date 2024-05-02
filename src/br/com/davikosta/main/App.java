@@ -1,6 +1,7 @@
 package br.com.davikosta.main;
 
 import br.com.davikosta.bank.BankAccount;
+import br.com.davikosta.messages.Errors;
 
 import java.util.Scanner;
 
@@ -11,10 +12,6 @@ public class App {
     static Scanner scanner = new Scanner(System.in);
     static int userChoice = 0;
     static double amount = 0;
-
-    //Messages
-    static String errorMessage = "Operação inválida!";
-
 
     public static void main(String[] args) {
         bankAccount1.setConsumerName("João Pedro da Silva");
@@ -51,7 +48,7 @@ public class App {
                 
                 Número de
                 operações realizadas:  %d
-                """,bankAccount1.getConsumerName(), bankAccount1.getConsumerSince(), bankAccount1.getAccountType(), bankAccount1.getConsumerBalance(), bankAccount1.getFinishedOperations());
+                """,bankAccount1.getConsumerName(), bankAccount1.getConsumerSince(), bankAccount1.getAccountType(), BankAccount.getConsumerBalance(), bankAccount1.getFinishedOperations());
     }
 
     public String showMenu() {
@@ -74,32 +71,27 @@ public class App {
     private static void doOperations(int userChoice) {
         switch (userChoice) {
             case 1:
-                System.out.println("O saldo atual é de " + bankAccount1.getConsumerBalance());
+                System.out.println("O saldo atual é de " + BankAccount.getConsumerBalance());
                 break;
             case 2:
                 System.out.println("Quanto deseja depositar na sua conta?");
                 amount = scanner.nextDouble();
                 bankAccount1.deposit(amount);
-                newBalanceMessage();
                 break;
             case 3:
                 System.out.println("Quanto deseja sacar da sua conta?");
                 amount = scanner.nextDouble();
                 bankAccount1.draw(amount);
-                newBalanceMessage();
                 break;
             case 4:
                 System.out.println(showConsumerData());
                 break;
             default:
                 if (userChoice != 5) {
-                    System.out.println(errorMessage);
+                    Errors.errorMessage();
                 }
                 break;
         }
     }
 
-    private static void newBalanceMessage() {
-        System.out.printf("O seu novo saldo é de R$ %.2f%n",bankAccount1.getConsumerBalance());
-    }
 }
