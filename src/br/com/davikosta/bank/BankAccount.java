@@ -29,18 +29,6 @@ public class BankAccount {
         }
     }
 
-<<<<<<< HEAD
-=======
-    //Getters
-    public int getFinishedOperations() {
-        return finishedOperations;
-    }
-
-    public static double getConsumerBalance() {
-        return consumerBalance;
-    }
-
->>>>>>> 74dc1693aadb00883bd8e2d9bfb09eaef1fa322b
     public String getConsumerName() {
         return consumerName;
     }
@@ -65,7 +53,7 @@ public class BankAccount {
         this.consumerSince = consumerSince;
     }
 
-    public double getConsumerBalance() {
+    public static double getConsumerBalance() {
         return consumerBalance;
     }
 
