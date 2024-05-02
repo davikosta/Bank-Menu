@@ -8,7 +8,7 @@ public class BankAccount {
     private int finishedOperations;
 
     public void deposit(double amountToDeposit) {
-        consumerBalance += amountToDeposit;
+        this.consumerBalance += amountToDeposit;
         registerNewOperation();
     }
 
@@ -17,8 +17,8 @@ public class BankAccount {
     }
 
     public void draw(double amountToDraw) {
-        if (amountToDraw > 0 && amountToDraw <=consumerBalance) {
-            consumerBalance -= amountToDraw;
+        if (amountToDraw > 0 && amountToDraw <=this.consumerBalance) {
+            this.consumerBalance -= amountToDraw;
             registerNewOperation();
         } else {
             String invalidAmountErrorMessage = "Por favor insira um valor válido!";
@@ -26,42 +26,39 @@ public class BankAccount {
         }
     }
 
-    //Getters
-    public int getFinishedOperations() {
-        return finishedOperations;
-    }
-
-    public double getConsumerBalance() {
-        return consumerBalance;
-    }
-
     public String getConsumerName() {
         return consumerName;
-    }
-
-    public int getConsumerSince() {
-        return consumerSince;
-    }
-
-    public String getAccountType() {
-        return accountType;
-    }
-
-
-    //Setters
-    public void setConsumerBalance(double consumerBalance) {
-        this.consumerBalance = consumerBalance;
     }
 
     public void setConsumerName(String consumerName) {
         this.consumerName = consumerName;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
     public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
 
+    public int getConsumerSince() {
+        return consumerSince;
+    }
+
     public void setConsumerSince(int consumerSince) {
         this.consumerSince = consumerSince;
+    }
+
+    public double getConsumerBalance() {
+        return consumerBalance;
+    }
+
+    public void setConsumerBalance(double consumerBalance) {
+        this.consumerBalance = consumerBalance;
+    }
+
+    public int getFinishedOperations() {
+        return finishedOperations;
     }
 }

@@ -1,3 +1,5 @@
+package br.com.davikosta.main;
+
 import br.com.davikosta.bank.BankAccount;
 
 import java.util.Scanner;
