@@ -23,7 +23,7 @@ public class App {
 
         System.out.println(showConsumerData());
 
-        while (userChoice != 5) {
+        while (userChoice != 6) {
 
             System.out.println(app.showMenu());
 
@@ -64,7 +64,9 @@ public class App {
                 
                 4 - Exibir resumo.
                 
-                5 - Encerrar programa.
+                5 - Exibir histórico de operações.
+                
+                6 - Encerrar programa.
                 """;
     }
 
@@ -86,8 +88,11 @@ public class App {
             case 4:
                 System.out.println(showConsumerData());
                 break;
+            case 5:
+                bankAccount1.printHistory();
+                break;
             default:
-                if (userChoice != 5) {
+                if (userChoice != 6) {
                     Errors.errorMessage();
                 }
                 break;

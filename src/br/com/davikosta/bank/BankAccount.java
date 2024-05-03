@@ -2,27 +2,43 @@ package br.com.davikosta.bank;
 import br.com.davikosta.messages.Errors;
 import br.com.davikosta.messages.NewBalance;
 
+import java.util.ArrayList;
+
 public class BankAccount {
     private String consumerName;
     private String accountType;
     private int consumerSince;
     private static double consumerBalance;
     private int finishedOperations;
+    private ArrayList<Double> transactionHistory = new ArrayList<>();
 
     public void deposit(double amountToDeposit) {
-        this.consumerBalance += amountToDeposit;
+        consumerBalance += amountToDeposit;
         registerNewOperation();
+        incrementHistory(amountToDeposit);
         NewBalance.message();
     }
 
+    public void printHistory() {
+        System.out.printf("Ao todo foram feitas %d operações. As operações mais recentes ficam ao final da lista.%n", finishedOperations);
+        for (double operation : transactionHistory) {
+            System.out.println(operation);
+        }
+    }
+
+    private void incrementHistory(double amountToIncrement) {
+        this.transactionHistory.add(amountToIncrement);
+    }
+
     public void registerNewOperation() {
-        finishedOperations++;
+        this.finishedOperations++;
     }
 
     public void draw(double amountToDraw) {
-        if (amountToDraw > 0 && amountToDraw <=this.consumerBalance) {
-            this.consumerBalance -= amountToDraw;
+        if (amountToDraw > 0 && amountToDraw <= consumerBalance) {
+            consumerBalance -= amountToDraw;
             registerNewOperation();
+            incrementHistory(-amountToDraw);
             NewBalance.message();
         } else {
             Errors.invalidAmountErrorMessage();
@@ -58,7 +74,7 @@ public class BankAccount {
     }
 
     public void setConsumerBalance(double consumerBalance) {
-        this.consumerBalance = consumerBalance;
+        BankAccount.consumerBalance = consumerBalance;
     }
 
     public int getFinishedOperations() {
