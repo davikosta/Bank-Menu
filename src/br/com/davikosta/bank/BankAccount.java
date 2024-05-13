@@ -10,7 +10,7 @@ public class BankAccount {
     private int consumerSince;
     private static double consumerBalance;
     private int finishedOperations;
-    private ArrayList<Double> transactionHistory = new ArrayList<>();
+    private final ArrayList<Double> transactionHistory = new ArrayList<>();
 
     public void deposit(double amountToDeposit) {
         consumerBalance += amountToDeposit;
