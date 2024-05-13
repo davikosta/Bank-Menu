@@ -1,7 +1,6 @@
 package br.com.davikosta.bank;
 import br.com.davikosta.messages.Errors;
 import br.com.davikosta.messages.NewBalance;
-
 import java.util.ArrayList;
 
 public class BankAccount {
@@ -22,7 +21,11 @@ public class BankAccount {
     public void printHistory() {
         System.out.printf("Ao todo foram feitas %d operações. As operações mais recentes ficam ao final da lista.%n", finishedOperations);
         for (double operation : transactionHistory) {
-            System.out.println(operation);
+            if (operation < 0) {
+                System.out.println("Saque: " + operation);
+            } else {
+                System.out.println("Depósito: " + operation);
+            }
         }
     }
 
@@ -45,11 +48,18 @@ public class BankAccount {
         }
     }
 
+    public BankAccount (String consumerName, String accountType, int consumerSince, double consumerBalance) {
+        this.setConsumerName(consumerName);
+        this.setAccountType(accountType);
+        this.setConsumerSince(consumerSince);
+        this.setConsumerBalance(consumerBalance);
+    }
+
     public String getConsumerName() {
         return consumerName;
     }
 
-    public void setConsumerName(String consumerName) {
+    private void setConsumerName(String consumerName) {
         this.consumerName = consumerName;
     }
 
@@ -65,7 +75,7 @@ public class BankAccount {
         return consumerSince;
     }
 
-    public void setConsumerSince(int consumerSince) {
+    private void setConsumerSince(int consumerSince) {
         this.consumerSince = consumerSince;
     }
 
@@ -73,7 +83,7 @@ public class BankAccount {
         return consumerBalance;
     }
 
-    public void setConsumerBalance(double consumerBalance) {
+    private void setConsumerBalance(double consumerBalance) {
         BankAccount.consumerBalance = consumerBalance;
     }
 

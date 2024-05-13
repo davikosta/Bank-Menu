@@ -7,17 +7,13 @@ import java.util.Scanner;
 
 public class App {
     //Consumer information
-    static BankAccount bankAccount1 = new BankAccount();
+    static BankAccount bankAccount1 = new BankAccount("João Pedro da Silva", "Conta corrente", 2021, 0);
     //Attributes to make the operations
     static Scanner scanner = new Scanner(System.in);
     static int userChoice = 0;
     static double amount = 0;
 
     public static void main(String[] args) {
-        bankAccount1.setConsumerName("João Pedro da Silva");
-        bankAccount1.setAccountType("Conta corrente");
-        bankAccount1.setConsumerSince(2021);
-        bankAccount1.setConsumerBalance(2000);
 
         App app = new App();
 
