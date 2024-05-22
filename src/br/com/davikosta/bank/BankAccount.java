@@ -1,7 +1,8 @@
 package br.com.davikosta.bank;
 import br.com.davikosta.messages.Errors;
 import br.com.davikosta.messages.NewBalance;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class BankAccount {
     private String customerName;
@@ -9,7 +10,7 @@ public class BankAccount {
     private int customerSince;
     private static double customerBalance;
     private int finishedOperations;
-    private ArrayList<Double> transactionHistory = new ArrayList<>();
+    private final List<Double> transactionHistory = new LinkedList<>();
 
     public void deposit(double amountToDeposit) {
         customerBalance += amountToDeposit;
