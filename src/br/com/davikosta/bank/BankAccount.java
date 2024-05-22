@@ -4,15 +4,15 @@ import br.com.davikosta.messages.NewBalance;
 import java.util.ArrayList;
 
 public class BankAccount {
-    private String consumerName;
+    private String customerName;
     private String accountType;
-    private int consumerSince;
-    private static double consumerBalance;
+    private int customerSince;
+    private static double customerBalance;
     private int finishedOperations;
     private ArrayList<Double> transactionHistory = new ArrayList<>();
 
     public void deposit(double amountToDeposit) {
-        consumerBalance += amountToDeposit;
+        customerBalance += amountToDeposit;
         registerNewOperation();
         incrementHistory(amountToDeposit);
         NewBalance.message();
@@ -38,8 +38,8 @@ public class BankAccount {
     }
 
     public void draw(double amountToDraw) {
-        if (amountToDraw > 0 && amountToDraw <= consumerBalance) {
-            consumerBalance -= amountToDraw;
+        if (amountToDraw > 0 && amountToDraw <= customerBalance) {
+            customerBalance -= amountToDraw;
             registerNewOperation();
             incrementHistory(-amountToDraw);
             NewBalance.message();
@@ -48,19 +48,19 @@ public class BankAccount {
         }
     }
 
-    public BankAccount (String consumerName, String accountType, int consumerSince, double consumerBalance) {
-        this.setConsumerName(consumerName);
+    public BankAccount (String customerName, String accountType, int customerSince, double customerBalance) {
+        this.setCustomerName(customerName);
         this.setAccountType(accountType);
-        this.setConsumerSince(consumerSince);
-        this.setConsumerBalance(consumerBalance);
+        this.setCustomerSince(customerSince);
+        this.setCustomerBalance(customerBalance);
     }
 
-    public String getConsumerName() {
-        return consumerName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    private void setConsumerName(String consumerName) {
-        this.consumerName = consumerName;
+    private void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getAccountType() {
@@ -71,20 +71,20 @@ public class BankAccount {
         this.accountType = accountType;
     }
 
-    public int getConsumerSince() {
-        return consumerSince;
+    public int getCustomerSince() {
+        return customerSince;
     }
 
-    private void setConsumerSince(int consumerSince) {
-        this.consumerSince = consumerSince;
+    private void setCustomerSince(int customerSince) {
+        this.customerSince = customerSince;
     }
 
-    public static double getConsumerBalance() {
-        return consumerBalance;
+    public static double getCustomerBalance() {
+        return customerBalance;
     }
 
-    private void setConsumerBalance(double consumerBalance) {
-        BankAccount.consumerBalance = consumerBalance;
+    private void setCustomerBalance(double customerBalance) {
+        BankAccount.customerBalance = customerBalance;
     }
 
     public int getFinishedOperations() {

@@ -17,7 +17,7 @@ public class App {
 
         App app = new App();
 
-        System.out.println(showConsumerData());
+        System.out.println(showCostumerData());
 
         while (userChoice != 6) {
 
@@ -29,7 +29,7 @@ public class App {
         }
     }
 
-    private static String showConsumerData() {
+    private static String showCostumerData() {
         return String.format("""
                 ---------------------------------------------------------------------
                 Resumo:
@@ -44,7 +44,7 @@ public class App {
                 
                 Número de
                 operações realizadas:  %d
-                """,bankAccount1.getConsumerName(), bankAccount1.getConsumerSince(), bankAccount1.getAccountType(), BankAccount.getConsumerBalance(), bankAccount1.getFinishedOperations());
+                """,bankAccount1.getCustomerName(), bankAccount1.getCustomerSince(), bankAccount1.getAccountType(), BankAccount.getCustomerBalance(), bankAccount1.getFinishedOperations());
     }
 
     public String showMenu() {
@@ -69,7 +69,7 @@ public class App {
     private static void doOperations(int userChoice) {
         switch (userChoice) {
             case 1:
-                System.out.println("O saldo atual é de " + BankAccount.getConsumerBalance());
+                System.out.println("O saldo atual é de " + BankAccount.getCustomerBalance());
                 break;
             case 2:
                 System.out.println("Quanto deseja depositar na sua conta?");
@@ -82,7 +82,7 @@ public class App {
                 bankAccount1.draw(amount);
                 break;
             case 4:
-                System.out.println(showConsumerData());
+                System.out.println(showCostumerData());
                 break;
             case 5:
                 bankAccount1.printHistory();
