@@ -1,11 +1,15 @@
 package br.com.davikosta.main;
 
 import br.com.davikosta.bank.BankAccount;
+import br.com.davikosta.menus.CustomerSummary;
+import br.com.davikosta.menus.OperationsMenu;
 import br.com.davikosta.messages.Errors;
 
 import java.util.Scanner;
 
 public class App {
+    static CustomerSummary customerSummary = new CustomerSummary();
+    static OperationsMenu operationsMenu = new OperationsMenu();
     //Consumer information
     static BankAccount bankAccount1 = new BankAccount("João Pedro da Silva", "Conta corrente", 2021, 0);
     //Attributes to make the operations
@@ -15,13 +19,11 @@ public class App {
 
     public static void main(String[] args) {
 
-        App app = new App();
-
-        System.out.println(showCostumerData());
+        customerSummary.showCustomerData(bankAccount1);
 
         while (userChoice != 6) {
 
-            System.out.println(app.showMenu());
+            operationsMenu.showMenu();
 
             userChoice = scanner.nextInt();
 
@@ -29,42 +31,7 @@ public class App {
         }
     }
 
-    private static String showCostumerData() {
-        return String.format("""
-                ---------------------------------------------------------------------
-                Resumo:
-                
-                Nome completo:         %s
-                
-                Cliente desde:         %d
-                
-                Tipo de conta:         %s
-                
-                Saldo:                 %.2f
-                
-                Número de
-                operações realizadas:  %d
-                """,bankAccount1.getCustomerName(), bankAccount1.getCustomerSince(), bankAccount1.getAccountType(), BankAccount.getCustomerBalance(), bankAccount1.getFinishedOperations());
-    }
 
-    public String showMenu() {
-        return """
-                ---------------------------------------------------------------------
-                Operações:
-                
-                1 - Consultar Saldo.
-                
-                2 - Depositar.
-                
-                3 - Sacar.
-                
-                4 - Exibir resumo.
-                
-                5 - Exibir histórico de operações.
-                
-                6 - Encerrar programa.
-                """;
-    }
 
     private static void doOperations(int userChoice) {
         switch (userChoice) {
@@ -82,7 +49,7 @@ public class App {
                 bankAccount1.draw(amount);
                 break;
             case 4:
-                System.out.println(showCostumerData());
+                customerSummary.showCustomerData(bankAccount1);
                 break;
             case 5:
                 bankAccount1.printHistory();
